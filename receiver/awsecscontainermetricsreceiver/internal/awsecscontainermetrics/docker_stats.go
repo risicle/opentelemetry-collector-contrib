@@ -71,11 +71,18 @@ type CPUUsage struct {
 	PerCPUUsage       []*uint64 `json:"percpu_usage,omitempty"`
 }
 
+type ThrottlingData struct {
+	Periods          *uint64 `json:"periods,omitempty"`
+	ThrottledPeriods *uint64 `json:"throttled_periods,omitempty"`
+	ThrottledTime    *uint64 `json:"throttled_time,omitempty"`
+}
+
 // CPUStats defines Cpu stats
 type CPUStats struct {
-	CPUUsage       *CPUUsage `json:"cpu_usage,omitempty"`
-	OnlineCpus     *uint64   `json:"online_cpus,omitempty"`
-	SystemCPUUsage *uint64   `json:"system_cpu_usage,omitempty"`
+	CPUUsage       *CPUUsage       `json:"cpu_usage,omitempty"`
+	ThrottlingData *ThrottlingData `json:"throttling_data,omitempty"`
+	OnlineCpus     *uint64         `json:"online_cpus,omitempty"`
+	SystemCPUUsage *uint64         `json:"system_cpu_usage,omitempty"`
 	CPUUtilized    *uint64
 	CPUReserved    *uint64
 }

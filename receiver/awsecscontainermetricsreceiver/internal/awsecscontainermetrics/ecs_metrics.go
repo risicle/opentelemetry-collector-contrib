@@ -21,6 +21,10 @@ type ECSMetrics struct {
 	CPUUtilized          float64
 	CPUUsageInVCPU       float64
 
+	ThrottlingPeriods          uint64
+	ThrottlingThrottledPeriods uint64
+	ThrottlingThrottledTime    uint64
+
 	NetworkRateRxBytesPerSecond float64
 	NetworkRateTxBytesPerSecond float64
 
