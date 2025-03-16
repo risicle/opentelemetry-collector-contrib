@@ -43,6 +43,10 @@ const (
 	attributeCPUUtilized        = "cpu.utilized"
 	attributeCPUUsageInVCPU     = "cpu.usage.vcpu"
 
+	attributeThrottlingPeriods          = "cpu.throttling.periods"
+	attributeThrottlingThrottledPeriods = "cpu.throttling.throttled_periods"
+	attributeThrottlingThrottledTime    = "cpu.throttling.throttled_time"
+
 	attributeNetworkRateRx = "network.rate.rx"
 	attributeNetworkRateTx = "network.rate.tx"
 

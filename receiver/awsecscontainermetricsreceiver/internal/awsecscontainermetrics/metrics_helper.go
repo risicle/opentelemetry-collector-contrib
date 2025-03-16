@@ -44,6 +44,12 @@ func getContainerMetrics(stats *ContainerStats, logger *zap.Logger) ECSMetrics {
 		m.SystemCPUUsage = aws.Uint64Value(stats.CPU.SystemCPUUsage)
 		m.CPUUsageInVCPU = cpuUsageInVCpu
 		m.CPUUtilized = cpuUtilized
+
+		if stats.CPU.ThrottlingData != nil && stats.CPU.ThrottlingData.Periods != nil {
+			m.ThrottlingPeriods = stats.CPU.ThrottlingData.Periods
+			m.ThrottlingThrottledPeriods = stats.CPU.ThrottledPeriods
+			m.ThrottlingThrottledTime = stats.CPU.ThrottledTime
+		}
 	} else {
 		logger.Debug("Nil CPUUsage stats found for docker container:" + stats.Name)
 	}

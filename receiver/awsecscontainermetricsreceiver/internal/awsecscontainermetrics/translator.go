@@ -33,6 +33,10 @@ func convertToOTLPMetrics(prefix string, m ECSMetrics, r pcommon.Resource, times
 	appendDoubleGauge(prefix+attributeCPUReserved, unitNone, m.CPUReserved, timestamp, ilms.AppendEmpty())
 	appendDoubleGauge(prefix+attributeCPUUsageInVCPU, unitVCpu, m.CPUUsageInVCPU, timestamp, ilms.AppendEmpty())
 
+	appendIntSum(prefix+attributeThrottlingPeriods, unitCount, int64(m.ThrottlingPeriods), timestamp, ilms.AppendEmpty())
+	appendIntSum(prefix+attributeThrottlingThrottledPeriods, unitCount, int64(m.ThrottlingThrottledPeriods), timestamp, ilms.AppendEmpty())
+	appendIntSum(prefix+attributeThrottlingThrottledTime, unitNanoSecond, int64(m.ThrottlingThrottledTime), timestamp, ilms.AppendEmpty())
+
 	appendDoubleGauge(prefix+attributeNetworkRateRx, unitBytesPerSec, m.NetworkRateRxBytesPerSecond, timestamp, ilms.AppendEmpty())
 	appendDoubleGauge(prefix+attributeNetworkRateTx, unitBytesPerSec, m.NetworkRateTxBytesPerSecond, timestamp, ilms.AppendEmpty())
 
