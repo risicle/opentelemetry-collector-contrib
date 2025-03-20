@@ -143,6 +143,10 @@ func aggregateTaskMetrics(taskMetrics *ECSMetrics, conMetrics ECSMetrics) {
 	taskMetrics.CPUReserved += conMetrics.CPUReserved
 	taskMetrics.CPUUsageInVCPU += conMetrics.CPUUsageInVCPU
 
+	taskMetrics.ThrottlingPeriods += conMetrics.ThrottlingPeriods
+	taskMetrics.ThrottlingThrottledPeriods += conMetrics.ThrottlingThrottledPeriods
+	taskMetrics.ThrottlingThrottledTime += conMetrics.ThrottlingThrottledTime
+
 	taskMetrics.NetworkRateRxBytesPerSecond += conMetrics.NetworkRateRxBytesPerSecond
 	taskMetrics.NetworkRateTxBytesPerSecond += conMetrics.NetworkRateTxBytesPerSecond
 
