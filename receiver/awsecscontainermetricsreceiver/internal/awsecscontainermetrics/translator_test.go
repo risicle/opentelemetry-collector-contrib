@@ -22,10 +22,11 @@ func TestConvertToOTMetrics(t *testing.T) {
 	m.MemoryUtilized = 100
 	m.MemoryReserved = 100
 	m.CPUTotalUsage = 100
+	m.ThrottlingPeriods = 123
 
 	resource := pcommon.NewResource()
 	md := convertToOTLPMetrics("container.", m, resource, timestamp)
-	require.EqualValues(t, 26, md.ResourceMetrics().At(0).ScopeMetrics().Len())
+	require.EqualValues(t, 29, md.ResourceMetrics().At(0).ScopeMetrics().Len())
 	assert.EqualValues(t, conventions.SchemaURL, md.ResourceMetrics().At(0).SchemaUrl())
 }
 
